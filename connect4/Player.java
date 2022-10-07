@@ -1,5 +1,7 @@
 package connect4;
 
+import utils.Console;
+
 public class Player {
 
     Color color;
@@ -16,7 +18,19 @@ public class Player {
     }
 
     public void play() {
-        
+        int column;
+        do {
+            column = this.getCoordinate(Message.ENTER_COLUMN_TO_PUT)-1;
+        } while (!this.board.hasRowSpace(column));
+        this.board.putToken(column, this.color);
+        this.putTokens++;
     }
 
+    int getCoordinate(Message message) {
+        return Console.getInstance().readInt(message.toString());
+    }
+
+    public int getPutTokens() {
+        return putTokens;
+    }
 }
