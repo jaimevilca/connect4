@@ -8,7 +8,7 @@ public class Connect4 {
 
     Connect4() {
         this.board = new Board();
-        this.turn = new Turn();
+        this.turn = new Turn(this.board);
     }
 
     private void start() {
@@ -25,7 +25,7 @@ public class Connect4 {
         Message.TITLE.writeln();
         this.board.write();
         do {
-            this.turn.play();
+            this.turn.move();
             this.board.write();
         } while (!this.isConnect4());
     }

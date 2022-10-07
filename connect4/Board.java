@@ -12,7 +12,7 @@ public class Board {
     private void reset() {
         for (int i = 0; i < Coordinate.DIMENSION_ROW; i++) {
             for (int j = 0; j < Coordinate.DIMENSION_COLUMN; j++) {
-                this.spaces[i][j] = null;
+                this.spaces[i][j] = CircleSpace.EMPTY;
             }
         }
     }
@@ -21,6 +21,12 @@ public class Board {
     }
 
     public boolean isConnect4(Object currentColor) {
+        return false;
+    }
+
+    public boolean isFinished(Color color) {
+
+        
         return false;
     }
 

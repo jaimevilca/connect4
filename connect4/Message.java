@@ -26,7 +26,6 @@ public enum Message {
         Console.getInstance().writeln(this.message.replaceAll("#player", "" + player));
     }
 
-
     @Override
     public String toString() {        
         return message;
