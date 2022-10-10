@@ -14,4 +14,8 @@ public enum Color {
         Console.getInstance().write(string);
     }
 
+    public boolean isNull() {
+        return this.equals(EMPTY);
+    }
+
 }

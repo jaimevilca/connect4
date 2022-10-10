@@ -7,7 +7,8 @@ public enum Message {
     HORIZONTAL_LINE("---------------"),
     VERTICAL_LINE(" | "),
     PLAYER_WIN("#player player: You win!!! :-)"),
-    ENTER_COLUMN_TO_PUT("Put token column position");
+    ENTER_COLUMN_TO_PUT("Put token column position: "), 
+    RESUME("Try again? (Y/N):");
 
 
     private String message;

@@ -1,5 +1,7 @@
 package connect4;
 
+import utils.YesNoDialog;
+
 public class Connect4 {
 
     private Board board;
@@ -18,7 +20,13 @@ public class Connect4 {
     }
 
     private boolean isResumeGame() {
-        return false;
+        YesNoDialog yesNoDialog = new YesNoDialog();
+		yesNoDialog.read(Message.RESUME.toString());
+        if (yesNoDialog.isAffirmative()) {
+			this.board.reset();
+			this.turn.reset();
+		}
+		return yesNoDialog.isAffirmative();
     }
 
     private void play() {

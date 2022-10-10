@@ -8,8 +8,6 @@ public class Turn {
     private Board board;
     private int currentPlayer;
 
-
-
     Turn(Board board) {
         assert board != null;
         this.board = board;
@@ -17,7 +15,7 @@ public class Turn {
         this.reset();
     }
 
-    private void reset() {
+    void reset() {
 
         for (int i = 0; i < NUMBER_PLAYERS; i++) {
             this.players[i] = new Player(Color.values()[i], this.board);
@@ -32,13 +30,17 @@ public class Turn {
 
     public void move() {
         this.players[this.currentPlayer].play();
-        if(!this.board.isFinished(getCurrentColor())){
+        if (!this.board.isFinished(getCurrentColor())) {
             nextPlayer();
         }
     }
 
     private void nextPlayer() {
         this.currentPlayer = (this.currentPlayer + 1) % Turn.NUMBER_PLAYERS;
+    }
+
+    void writeResult(){
+        this.players[this.currentPlayer].writeResult();
     }
 
 }
