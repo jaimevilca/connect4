@@ -1,6 +1,8 @@
-package connect4;
+package connect4.v2.models;
 
-import utils.Console;
+import connect4.v2.types.Color;
+import connect4.v2.utils.Console;
+import connect4.v2.utils.Message;
 
 public class Player {
 
@@ -17,11 +19,9 @@ public class Player {
         return null;
     }
 
-    public void play() {
-        int column;
-        do {
-            column = this.getCoordinate(Message.ENTER_COLUMN_TO_PUT)-1;
-        } while (!this.board.hasRowSpace(column));
+
+
+    void putToken(int column) {
         this.board.putToken(column, this.color);
         this.putTokens++;
     }

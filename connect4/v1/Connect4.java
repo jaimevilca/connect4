@@ -1,4 +1,6 @@
-package connect4;
+package connect4.v1;
+
+import connect4.v1.utils.Message;
 
 public class Connect4 {
 

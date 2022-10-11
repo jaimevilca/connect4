@@ -1,14 +1,15 @@
-package connect4;
-
-import utils.Console;
+package connect4.v2.utils;
 
 public enum Message {
     TITLE("#########CONNECT4#######"),
     HORIZONTAL_LINE("---------------"),
     VERTICAL_LINE(" | "),
     PLAYER_WIN("#player player: You win!!! :-)"),
-    ENTER_COLUMN_TO_PUT("Put token column position");
+    ENTER_COLUMN_TO_PUT("Put token column position "),
 
+    RESUME("Reset game? y / n "),
+
+    PLAYER_TURN("player #player turn ");
 
     private String message;
 
@@ -16,16 +17,15 @@ public enum Message {
         this.message = message;
     }
 
-    void write() {
+    public void write() {
         Console.getInstance().write(this.message);
     }
 
-    void writeln() {
+    public void writeln() {
         Console.getInstance().writeln(this.message);
     }
 
-    void writeln(String player) {
-        assert this == Message.PLAYER_WIN;
+   public void writeln(int player) {
         Console.getInstance().writeln(this.message.replaceAll("#player", "" + player));
     }
 

@@ -1,4 +1,8 @@
-package connect4;
+package connect4.v2.models;
+
+import connect4.v2.types.Color;
+import connect4.v2.types.Coordinate;
+import connect4.v2.utils.Message;
 
 public class Turn {
 
@@ -9,7 +13,6 @@ public class Turn {
     private int currentPlayer;
 
 
-
     Turn(Board board) {
         assert board != null;
         this.board = board;
@@ -17,7 +20,7 @@ public class Turn {
         this.reset();
     }
 
-    private void reset() {
+    public void reset() {
 
         for (int i = 0; i < NUMBER_PLAYERS; i++) {
             this.players[i] = new Player(Color.values()[i], this.board);
@@ -30,15 +33,26 @@ public class Turn {
         return this.players[this.currentPlayer].getColor();
     }
 
-    public void move() {
-        this.players[this.currentPlayer].play();
-        if(!this.board.isFinished(getCurrentColor())){
-            nextPlayer();
-        }
+
+    public void putToken(int column) {
+        if (!isTokensCompleted())
+            this.players[this.currentPlayer].putToken(column);
     }
 
-    private void nextPlayer() {
+    public boolean isTokensCompleted() {
+        int totalTokens = 0;
+        for (int i = 0; i < NUMBER_PLAYERS; i++) {
+            totalTokens += this.players[i].getPutTokens();
+        }
+        return totalTokens == Coordinate.DIMENSION_ROW * Coordinate.DIMENSION_COLUMN;
+
+    }
+
+    public void nextPlayer() {
         this.currentPlayer = (this.currentPlayer + 1) % Turn.NUMBER_PLAYERS;
     }
 
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
 }

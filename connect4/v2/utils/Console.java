@@ -1,4 +1,4 @@
-package utils;
+package connect4.v2.utils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

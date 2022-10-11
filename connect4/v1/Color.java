@@ -1,16 +1,13 @@
-package connect4;
+package connect4.v1;
 
-import utils.Console;
+import connect4.v1.utils.Console;
 
 public enum Color {
     RED,
-    BLUE,
-    EMPTY;
+    BLUE;
 
     void write() {
         String string = this.name().substring(0,1);
-        if(this.equals(EMPTY))
-            string = "*";
         Console.getInstance().write(string);
     }
 
