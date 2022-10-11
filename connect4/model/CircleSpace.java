@@ -1,4 +1,6 @@
-package connect4;
+package connect4.model;
+
+import connect4.types.Color;
 
 public class CircleSpace {
 

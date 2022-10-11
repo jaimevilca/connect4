@@ -1,50 +1,28 @@
 package connect4;
 
-import utils.YesNoDialog;
+import connect4.model.Game;
+import connect4.views.View;
 
 public class Connect4 {
 
-    private Board board;
-    private Turn turn;
-
+    private Game game;
+    private View view;
 
     Connect4() {
-        this.board = new Board();
-        this.turn = new Turn(this.board);
-    }
-
-    private void start() {
-        do {
-            this.play();
-        } while (this.isResumeGame());
-    }
-
-    private boolean isResumeGame() {
-        YesNoDialog yesNoDialog = new YesNoDialog();
-		yesNoDialog.read(Message.RESUME.toString());
-        if (yesNoDialog.isAffirmative()) {
-			this.board.reset();
-			this.turn.reset();
-		}
-		return yesNoDialog.isAffirmative();
+        this.game = new Game();
+        this.view = new View(this.game);
     }
 
     private void play() {
-        Message.TITLE.writeln();
-        this.board.write();
+
+        this.view.start();
         do {
-            this.turn.move();
-            this.board.write();
-        } while (!this.isConnect4());
-    }
-
-
-    private boolean isConnect4() {
-        return this.board.isConnect4(this.turn.getCurrentColor());
+            this.view.play();
+        } while (this.view.resume());
     }
 
     public static void main(String[] args) {
-        new Connect4().start();
+        new Connect4().play();
     }
-    
+
 }

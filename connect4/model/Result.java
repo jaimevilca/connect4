@@ -1,4 +1,4 @@
-package connect4;
+package connect4.model;
 
 public class Result {
 

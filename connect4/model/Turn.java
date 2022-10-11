@@ -1,4 +1,8 @@
-package connect4;
+package connect4.model;
+
+import connect4.other.Player;
+import connect4.types.Color;
+import connect4.types.Coordinate;
 
 public class Turn {
 
@@ -28,8 +32,7 @@ public class Turn {
         return this.players[this.currentPlayer].getColor();
     }
 
-    public void move() {
-        this.players[this.currentPlayer].play();
+    public void move() {        
         if (!this.board.isFinished(getCurrentColor())) {
             nextPlayer();
         }
@@ -42,5 +45,31 @@ public class Turn {
     void writeResult(){
         this.players[this.currentPlayer].writeResult();
     }
+
+    public void next() {
+    }
+
+    public boolean areAllTokensOnBoard() {
+        return false;
+    }
+
+    public void putToken(int column) {
+        this.getCurrentPlayer().putToken(column);
+    }
+
+	private Player getCurrentPlayer() {
+        return this.players[this.currentPlayer];
+    }
+
+    public boolean isEmptyColumn(int column) {
+		return this.board.isEmpty(column);
+	}
+
+	public void moveToken(Coordinate origin, Coordinate target) {
+	}
+
+	public Error getTargetMoveTokenError(Coordinate origin, Coordinate target) {
+		return null;
+	}
 
 }

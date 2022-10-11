@@ -1,4 +1,4 @@
-package connect4;
+package connect4.model;
 
 import utils.Console;
 
@@ -17,11 +17,11 @@ public enum Message {
         this.message = message;
     }
 
-    void write() {
+    public void write() {
         Console.getInstance().write(this.message);
     }
 
-    void writeln() {
+    public void writeln() {
         Console.getInstance().writeln(this.message);
     }
 

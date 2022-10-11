@@ -1,9 +1,10 @@
-package connect4;
+package connect4.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.Console;
+import connect4.types.Color;
+import connect4.types.Coordinate;
 import utils.Direction;
 
 public class Board {
@@ -21,20 +22,6 @@ public class Board {
                 this.spaces[i][j] = new CircleSpace(Color.EMPTY);
             }
         }
-    }
-
-    public void write() {
-        Message.HORIZONTAL_LINE.writeln();
-        for (int i = 0; i < Coordinate.DIMENSION_ROW; i++) {
-            Message.VERTICAL_LINE.write();
-            for (int j = 0; j < Coordinate.DIMENSION_COLUMN; j++) {
-                this.spaces[i][j].write();
-                Message.VERTICAL_LINE.write();
-            }
-            Console.getInstance().writeln();
-        }
-        Message.HORIZONTAL_LINE.writeln();
-
     }
 
     public boolean hasRowSpace(int column) {
@@ -105,5 +92,9 @@ public class Board {
 
     public boolean isEmpty(int column) {
         return this.hasRowSpace(column);
+    }
+
+    public Color getColor(Coordinate coordinate) {
+        return null;
     }
 }

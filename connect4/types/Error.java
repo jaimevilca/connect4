@@ -1,8 +1,8 @@
-package connect4;
+package connect4.types;
 
 import utils.Console;
 
-enum Error {
+public enum Error {
 
     NOT_EMPTY("The circle is not empty"),
     NULL;
@@ -16,7 +16,7 @@ enum Error {
         this.message = message;
     }
 
-    void writeln() {
+    public void writeln() {
         if (!this.isNull()) {
             Console.getInstance().writeln(this.message);
         }

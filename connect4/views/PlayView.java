@@ -1,38 +1,34 @@
-package connect4;
+package connect4.views;
 
-import utils.Console;
+import connect4.model.Game;
+import connect4.other.Message;
+import connect4.types.Error;
 
-public class Player {
+public class PlayView {
 
-    Color color;
-    Board board;
-    private int putTokens;
+    private Game game;
 
-    public Player(Color color, Board board) {
-        this.color = color;
-        this.board = board;
+    public PlayView(Game game) {
+        this.game = game;
     }
 
-    public Color getColor() {
-        return this.color;
-    }
+    public void interact() {
 
-    public void play() {        
         int column;
         Error error;
         do {
             column = this.getColumn(Message.ENTER_COLUMN_TO_PUT);
             error = this.getPutTokenError(column);
         } while (error != Error.NULL);
-        this.board.putToken(column, this.color);
-        this.putTokens++;
+        this.game.putToken(column);
+        
     }
 
     private Error getPutTokenError(int column) {
         assert column != 0;
 
         Error error = Error.NULL;
-        if(!this.board.isEmpty(column)){
+        if(!this.game.board.isEmpty(column)){
             error = Error.NOT_EMPTY;
         }
 
@@ -44,10 +40,4 @@ public class Player {
         return Console.getInstance().readInt(message.toString()) - 1;
     }
 
-    public int getPutTokens() {
-        return putTokens;
-    }
-
-    public void writeResult() {
-    }
 }
