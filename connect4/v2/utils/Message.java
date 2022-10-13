@@ -4,8 +4,12 @@ public enum Message {
     TITLE("#########CONNECT4#######"),
     HORIZONTAL_LINE("---------------"),
     VERTICAL_LINE(" | "),
-    PLAYER_WIN("#player player: You win!!! :-)"),
+
     ENTER_COLUMN_TO_PUT("Put token column position "),
+
+    PLAYER_WIN("#player player: You win!!! :-)"),
+
+    GAME_FINISHED("Game finished - Draw"),
 
     RESUME("Reset game? y / n "),
 

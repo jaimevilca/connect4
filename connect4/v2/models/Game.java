@@ -1,8 +1,7 @@
 package connect4.v2.models;
 
+import connect4.v2.results.WinnerResultValidator;
 import connect4.v2.types.Color;
-import connect4.v2.types.Coordinate;
-import connect4.v2.utils.Message;
 
 public class Game {
 
@@ -25,9 +24,6 @@ public class Game {
         this.turn.nextPlayer();
     }
 
-    public Color getCurrentColor() {
-        return this.turn.getCurrentColor();
-    }
 
     public int getCurrentPlayer() {
         return this.turn.getCurrentPlayer();
@@ -38,13 +34,11 @@ public class Game {
     }
 
     public boolean isConnect4() {
-        return isFinished() || this.board.isConnect4(this.turn.getCurrentColor());
+        return new WinnerResultValidator().valid(this.board);
     }
     public boolean isFinished() {
-        return this.turn.isTokensCompleted();
+        return this.turn.isAllTokensAdded();
     }
-
-
 
     public Board getBoard() {
         return board;
@@ -54,11 +48,5 @@ public class Game {
         this.board = board;
     }
 
-    public Turn getTurn() {
-        return turn;
-    }
 
-    public void setTurn(Turn turn) {
-        this.turn = turn;
-    }
 }

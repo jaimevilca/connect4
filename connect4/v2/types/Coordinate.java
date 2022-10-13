@@ -2,21 +2,20 @@ package connect4.v2.types;
 
 public class Coordinate {
 
-    public static final int DIMENSION_ROW = 7;
-    public static final int DIMENSION_COLUMN = 6;
+    private int column, row;
 
-    private int x,y ;
-
-    public Coordinate(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Coordinate(int row, int column) {
+        this.column = column;
+        this.row = row;
     }
 
-    public int getX() {
-        return x;
+    public int getColumn() {
+        return column;
     }
 
-    public int getY() {
-        return y;
+    public int getRow() {
+        return row;
     }
+
+
 }

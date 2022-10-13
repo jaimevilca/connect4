@@ -15,19 +15,9 @@ public class Player {
         this.board = board;
     }
 
-    public Color getColor() {
-        return null;
-    }
-
-
-
     void putToken(int column) {
         this.board.putToken(column, this.color);
         this.putTokens++;
-    }
-
-    int getCoordinate(Message message) {
-        return Console.getInstance().readInt(message.toString());
     }
 
     public int getPutTokens() {

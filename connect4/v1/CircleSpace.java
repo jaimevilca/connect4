@@ -8,7 +8,7 @@ public class CircleSpace {
 
     public Token token;
 
-    Coordinate coordinate;
+    public Coordinate coordinate;
 
     public CircleSpace() {
     }

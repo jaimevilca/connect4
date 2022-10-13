@@ -1,8 +1,6 @@
 package connect4.v2.models;
 
 import connect4.v2.types.Color;
-import connect4.v2.types.Coordinate;
-import connect4.v2.utils.Message;
 
 public class Turn {
 
@@ -29,22 +27,18 @@ public class Turn {
         this.currentPlayer = 0;
     }
 
-    public Color getCurrentColor() {
-        return this.players[this.currentPlayer].getColor();
-    }
-
 
     public void putToken(int column) {
-        if (!isTokensCompleted())
+        if (!isAllTokensAdded())
             this.players[this.currentPlayer].putToken(column);
     }
 
-    public boolean isTokensCompleted() {
+    public boolean isAllTokensAdded() {
         int totalTokens = 0;
         for (int i = 0; i < NUMBER_PLAYERS; i++) {
             totalTokens += this.players[i].getPutTokens();
         }
-        return totalTokens == Coordinate.DIMENSION_ROW * Coordinate.DIMENSION_COLUMN;
+        return totalTokens == Board.DIMENSION_ROW * Board.DIMENSION_COLUMN;
 
     }
 

@@ -1,25 +1,21 @@
 package connect4.v2.models;
 
+import connect4.v2.types.Color;
 import connect4.v2.types.Coordinate;
-import connect4.v2.utils.Console;
 
-public class CircleSpace {
-
-    public static final String SPACE = "*";
+public class BoardSpace {
 
     public Token token;
 
-    Coordinate coordinate;
+    public Coordinate coordinate;
 
-    public CircleSpace() {
+    public BoardSpace() {
     }
 
-    public CircleSpace(Coordinate coordinate) {
+    public BoardSpace(Coordinate coordinate) {
         this.coordinate = coordinate;
     }
-    public CircleSpace(Token token) {
-        this.token = token;
-    }
+
 
     public void setToken(Token token) {
         this.token = token;
@@ -29,11 +25,15 @@ public class CircleSpace {
         return token;
     }
 
+    public Color getColor() {
+        if (this.getToken() != null)
+            return this.getToken().getColor();
+        else return null;
+    }
+
     public Coordinate getCoordinate() {
         return coordinate;
     }
-
-
 
 
 }

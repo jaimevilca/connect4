@@ -1,19 +1,15 @@
 package connect4.v2.views;
 
-import connect4.v2.models.Board;
-import connect4.v2.models.CircleSpace;
-import connect4.v2.types.Coordinate;
-import connect4.v2.utils.Console;
-import connect4.v2.utils.Message;
+import connect4.v2.models.BoardSpace;
 
 public class CircleSpaceView extends ConsoleView {
 
-    public void write(CircleSpace circleSpace) {
+    public void write(BoardSpace boardSpace) {
 
-            if (circleSpace.getToken() == null)
+            if (boardSpace.getToken() == null)
                 this.write("*");
             else
-                new ColorView().write(circleSpace.getToken().getColor());
+                new ColorView().write(boardSpace.getToken().getColor());
 
 
     }

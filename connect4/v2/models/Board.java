@@ -2,33 +2,26 @@ package connect4.v2.models;
 
 import connect4.v2.types.Color;
 import connect4.v2.types.Coordinate;
-import connect4.v2.results.WinnerResult;
-import connect4.v2.utils.Console;
-import connect4.v2.utils.Message;
 
 public class Board {
 
-    CircleSpace[][] spaces;
+    public static final int DIMENSION_ROW = 7;
+    public static final int DIMENSION_COLUMN = 6;
+    BoardSpace[][] spaces;
+
+    BoardSpace lastSpace;
 
     Board() {
-        this.spaces = new CircleSpace[Coordinate.DIMENSION_ROW][Coordinate.DIMENSION_COLUMN];
+        this.spaces = new BoardSpace[DIMENSION_ROW][DIMENSION_COLUMN];
         this.reset();
     }
 
     public void reset() {
-        for (int i = 0; i < Coordinate.DIMENSION_ROW; i++) {
-            for (int j = 0; j < Coordinate.DIMENSION_COLUMN; j++) {
-                this.spaces[i][j] = new CircleSpace(new Coordinate(i, j));
+        for (int i = 0; i < DIMENSION_ROW; i++) {
+            for (int j = 0; j < DIMENSION_COLUMN; j++) {
+                this.spaces[i][j] = new BoardSpace(new Coordinate(i, j));
             }
         }
-    }
-
-
-
-    public boolean isConnect4(Color currentColor) {
-        //TODO valid draw
-        WinnerResult winnerResult = new WinnerResult();
-        return winnerResult.valid(this, currentColor);
     }
 
 
@@ -36,9 +29,9 @@ public class Board {
         return getNextRowCircleSpace(column) != null;
     }
 
-    public CircleSpace getNextRowCircleSpace(int column) {
+    public BoardSpace getNextRowCircleSpace(int column) {
 
-        for (int j = Coordinate.DIMENSION_ROW - 1; j >= 0; j--) {
+        for (int j = DIMENSION_ROW - 1; j >= 0; j--) {
             if (this.spaces[j][column].getToken() == null)
                 return this.spaces[j][column];
         }
@@ -46,19 +39,34 @@ public class Board {
     }
 
     public void putToken(int column, Color color) {
-        CircleSpace circleSpace = getNextRowCircleSpace(column);
+        BoardSpace boardSpace = getNextRowCircleSpace(column);
         Token token = new Token(color);
-        circleSpace.setToken(token);
+        boardSpace.setToken(token);
+        lastSpace = boardSpace;
     }
 
-    public CircleSpace getCircleSpace(Coordinate coordinate) {
-        return spaces[coordinate.getX()][coordinate.getY()];
+    public BoardSpace getCircleSpace(Coordinate coordinate) {
+        return spaces[coordinate.getRow()][coordinate.getColumn()];
     }
-    public CircleSpace[][] getSpaces() {
+
+    public BoardSpace[][] getSpaces() {
         return spaces;
     }
 
-    public void setSpaces(CircleSpace[][] spaces) {
-        this.spaces = spaces;
+    public BoardSpace getLastSpace() {
+        return lastSpace;
     }
+
+    public boolean isCoordinateValid(Coordinate coordinate) {
+        return (coordinate.getRow() >= 0 && coordinate.getRow() < Board.DIMENSION_ROW) && (coordinate.getColumn() >= 0 && coordinate.getColumn() < Board.DIMENSION_COLUMN);
+    }
+
+    public Color getCurrentColor() {
+        return lastSpace.getColor();
+    }
+
+    public Coordinate getCurrentCoordinate() {
+        return lastSpace.getCoordinate();
+    }
+
 }
