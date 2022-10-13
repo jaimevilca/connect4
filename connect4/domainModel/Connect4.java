@@ -1,6 +1,6 @@
-package connect4;
+package connect4.domainModel;
 
-import utils.YesNoDialog;
+import connect4.domainModel.utils.YesNoDialog;
 
 public class Connect4 {
 

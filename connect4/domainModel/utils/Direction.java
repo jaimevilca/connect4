@@ -1,4 +1,4 @@
-package utils;
+package connect4.domainModel.utils;
 
 public enum Direction {
 

@@ -1,6 +1,6 @@
-package connect4;
+package connect4.domainModel;
 
-import utils.Console;
+import connect4.domainModel.utils.Console;
 
 public class Player {
 
@@ -17,7 +17,7 @@ public class Player {
         return this.color;
     }
 
-    public void play() {        
+    public void play() {
         int column;
         Error error;
         do {
@@ -32,7 +32,7 @@ public class Player {
         assert column != 0;
 
         Error error = Error.NULL;
-        if(!this.board.isEmpty(column)){
+        if (!this.board.isEmpty(column)) {
             error = Error.NOT_EMPTY;
         }
 

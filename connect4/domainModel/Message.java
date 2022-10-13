@@ -1,6 +1,6 @@
-package connect4;
+package connect4.domainModel;
 
-import utils.Console;
+import connect4.domainModel.utils.Console;
 
 public enum Message {
     TITLE("#########CONNECT4#######"),

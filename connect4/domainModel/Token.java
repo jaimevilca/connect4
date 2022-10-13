@@ -1,4 +1,4 @@
-package connect4;
+package connect4.domainModel;
 
 public enum Token {
     NULL

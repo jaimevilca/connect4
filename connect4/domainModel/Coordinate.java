@@ -1,6 +1,6 @@
-package connect4;
+package connect4.domainModel;
 
-import utils.Direction;
+import connect4.domainModel.utils.Direction;
 
 public class Coordinate {
 
@@ -12,8 +12,6 @@ public class Coordinate {
         this.column = column;
     }
 
-    public static final int DIMENSION_ROW = 7;
-    public static final int DIMENSION_COLUMN = 6;
     public static final int DIMENSION = 4;
 
     public Direction getDirection(Coordinate coordinate) {

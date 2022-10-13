@@ -1,23 +1,26 @@
-package connect4;
+package connect4.domainModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.Console;
-import utils.Direction;
+import connect4.domainModel.utils.Console;
+import connect4.domainModel.utils.Direction;
 
 public class Board {
 
     CircleSpace[][] spaces;
 
+    public static final int DIMENSION_ROW = 7;
+    public static final int DIMENSION_COLUMN = 6;
+
     Board() {
-        this.spaces = new CircleSpace[Coordinate.DIMENSION_ROW][Coordinate.DIMENSION_COLUMN];
+        this.spaces = new CircleSpace[DIMENSION_ROW][DIMENSION_COLUMN];
         this.reset();
     }
 
     void reset() {
-        for (int i = 0; i < Coordinate.DIMENSION_ROW; i++) {
-            for (int j = 0; j < Coordinate.DIMENSION_COLUMN; j++) {
+        for (int i = 0; i < DIMENSION_ROW; i++) {
+            for (int j = 0; j < DIMENSION_COLUMN; j++) {
                 this.spaces[i][j] = new CircleSpace(Color.EMPTY);
             }
         }
@@ -25,9 +28,9 @@ public class Board {
 
     public void write() {
         Message.HORIZONTAL_LINE.writeln();
-        for (int i = 0; i < Coordinate.DIMENSION_ROW; i++) {
+        for (int i = 0; i < DIMENSION_ROW; i++) {
             Message.VERTICAL_LINE.write();
-            for (int j = 0; j < Coordinate.DIMENSION_COLUMN; j++) {
+            for (int j = 0; j < DIMENSION_COLUMN; j++) {
                 this.spaces[i][j].write();
                 Message.VERTICAL_LINE.write();
             }
@@ -43,7 +46,7 @@ public class Board {
 
     public CircleSpace getNextRowCircleSpace(int column) {
 
-        for (int j = Coordinate.DIMENSION_ROW - 1; j >= 0; j--) {
+        for (int j = DIMENSION_ROW - 1; j >= 0; j--) {
             if (this.spaces[j][column].getColor() == Color.EMPTY)
                 return this.spaces[j][column];
         }
@@ -88,8 +91,8 @@ public class Board {
         assert !color.isNull();
 
 		List<Coordinate> coordinates = new ArrayList<>();
-		for (int i = 0; i < Coordinate.DIMENSION_ROW; i++) {
-			for (int j = 0; j < Coordinate.DIMENSION_COLUMN; j++) {
+		for (int i = 0; i < DIMENSION_ROW; i++) {
+			for (int j = 0; j < DIMENSION_COLUMN; j++) {
 				if (this.spaces[i][j].getColor() == color) {
 					coordinates.add(new Coordinate(i, j));
 				}
