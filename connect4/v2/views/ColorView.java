@@ -7,8 +7,17 @@ public class ColorView extends ConsoleView {
 
 
     void write(Color color) {
-        String string = color.name().substring(0, 1);
-        this.write(string);
+
+        if (color.isNull()){
+            this.write("*");
+        }else {
+            String string = color.name().substring(0, 1);
+            this.write(string);
+        }
+
+
+
+
     }
 
 

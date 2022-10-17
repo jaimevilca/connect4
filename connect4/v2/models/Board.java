@@ -7,54 +7,46 @@ public class Board {
 
     public static final int DIMENSION_ROW = 7;
     public static final int DIMENSION_COLUMN = 6;
-    BoardSpace[][] spaces;
+    Color[][] colors;
 
-    BoardSpace lastSpace;
+    Coordinate lastToken;
 
     Board() {
-        this.spaces = new BoardSpace[DIMENSION_ROW][DIMENSION_COLUMN];
+        this.colors = new Color[DIMENSION_ROW][DIMENSION_COLUMN];
         this.reset();
     }
 
     public void reset() {
+
         for (int i = 0; i < DIMENSION_ROW; i++) {
             for (int j = 0; j < DIMENSION_COLUMN; j++) {
-                this.spaces[i][j] = new BoardSpace(new Coordinate(i, j));
+                this.colors[i][j] = Color.NULL;
             }
         }
     }
 
 
-    public boolean hasRowSpace(int column) {
-        return getNextRowCircleSpace(column) != null;
-    }
+    public Integer getNextRow(int column) {
 
-    public BoardSpace getNextRowCircleSpace(int column) {
-
-        for (int j = DIMENSION_ROW - 1; j >= 0; j--) {
-            if (this.spaces[j][column].getToken() == null)
-                return this.spaces[j][column];
+        for (int row = DIMENSION_ROW - 1; row >= 0; row--) {
+            if (this.colors[row][column].isNull())
+                return row;
         }
         return null;
     }
 
     public void putToken(int column, Color color) {
-        BoardSpace boardSpace = getNextRowCircleSpace(column);
-        Token token = new Token(color);
-        boardSpace.setToken(token);
-        lastSpace = boardSpace;
+        Coordinate coordinate = new Coordinate(getNextRow(column), column);
+        this.colors[coordinate.getRow()][coordinate.getColumn()] = color;
+        lastToken = coordinate;
     }
 
-    public BoardSpace getCircleSpace(Coordinate coordinate) {
-        return spaces[coordinate.getRow()][coordinate.getColumn()];
+    public Color getColor(Coordinate coordinate) {
+        return colors[coordinate.getRow()][coordinate.getColumn()];
     }
 
-    public BoardSpace[][] getSpaces() {
-        return spaces;
-    }
-
-    public BoardSpace getLastSpace() {
-        return lastSpace;
+    public Color[][] getColors() {
+        return colors;
     }
 
     public boolean isCoordinateValid(Coordinate coordinate) {
@@ -62,11 +54,11 @@ public class Board {
     }
 
     public Color getCurrentColor() {
-        return lastSpace.getColor();
+        return colors[lastToken.getRow()][lastToken.getColumn()];
     }
 
-    public Coordinate getCurrentCoordinate() {
-        return lastSpace.getCoordinate();
+    public Coordinate getLastToken() {
+        return lastToken;
     }
 
 }

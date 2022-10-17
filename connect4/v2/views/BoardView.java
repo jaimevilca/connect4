@@ -12,7 +12,7 @@ public class BoardView extends ConsoleView {
         for (int i = 0; i < Board.DIMENSION_ROW; i++) {
             Message.VERTICAL_LINE.write();
             for (int j = 0; j < Board.DIMENSION_COLUMN; j++) {
-                new CircleSpaceView().write(board.getCircleSpace(new Coordinate(i,j)));
+                new ColorView().write(board.getColor(new Coordinate(i,j)));
                 Message.VERTICAL_LINE.write();
             }
             Console.getInstance().writeln();

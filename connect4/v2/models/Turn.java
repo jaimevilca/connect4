@@ -29,8 +29,10 @@ public class Turn {
 
 
     public void putToken(int column) {
-        if (!isAllTokensAdded())
+
+        if (!isAllTokensAdded()){
             this.players[this.currentPlayer].putToken(column);
+        }
     }
 
     public boolean isAllTokensAdded() {

@@ -15,7 +15,7 @@ public class PlayerView extends InteractiveView {
         int column;
         do {
             column = Console.getInstance().readInt(Message.ENTER_COLUMN_TO_PUT.toString()) - 1;
-        } while (!this.game.getBoard().hasRowSpace(column));
+        } while (this.game.getBoard().getNextRow(column) == null);
         this.game.putToken(column);
     }
 

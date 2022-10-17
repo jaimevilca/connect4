@@ -4,7 +4,12 @@ import connect4.v2.utils.Console;
 
 public enum Color {
     RED,
-    BLUE;
+    BLUE,
+    NULL;
+
+    public boolean isNull(){
+        return Color.NULL.equals(this);
+    }
 
 
 }

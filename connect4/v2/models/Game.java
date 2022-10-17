@@ -1,13 +1,17 @@
 package connect4.v2.models;
 
-import connect4.v2.results.WinnerResultValidator;
-import connect4.v2.types.Color;
+import connect4.v2.rules.LineResultValidator;
+import connect4.v2.types.Coordinate;
+import connect4.v2.types.Direction;
+
+import java.util.List;
 
 public class Game {
 
     private Board board;
     private Turn turn;
 
+    int MIN_RESULT_SIZE = 4;
 
     public Game() {
         this.board = new Board();
@@ -33,9 +37,6 @@ public class Game {
         this.turn.putToken(column);
     }
 
-    public boolean isConnect4() {
-        return new WinnerResultValidator().valid(this.board);
-    }
     public boolean isFinished() {
         return this.turn.isAllTokensAdded();
     }
@@ -48,5 +49,41 @@ public class Game {
         this.board = board;
     }
 
+    public boolean isConnect4() {
+        List<Direction[]> directions = Direction.getAllDirections();
+        LineResultValidator resultValidator = new LineResultValidator(board);
+        for (int i = 0; i < directions.size(); i++) {
+            if (valid(directions.get(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean valid(Direction[] directions) {
+
+        int totalTokens = 1;
+        for (int i = 0; i < directions.length; i++) {
+            totalTokens += countValidTokens(directions[i]);
+        }
+        return isLineCompleted(totalTokens);
+    }
+
+    public boolean isLineCompleted(int length) {
+        return length >= MIN_RESULT_SIZE;
+    }
+
+    public int countValidTokens(Direction direction) {
+
+        int tokens = 0;
+        Coordinate nextCoordinate = direction.move(this.board.getLastToken());
+        while (this.board.isCoordinateValid(nextCoordinate)
+                && this.board.getCurrentColor().equals(this.board.getColor(nextCoordinate))) {
+            tokens++;
+            nextCoordinate = direction.move(nextCoordinate);
+        }
+
+        return tokens;
+    }
 
 }
