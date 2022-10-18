@@ -1,9 +1,6 @@
 package connect4.v2;
 
-import connect4.v2.models.Board;
 import connect4.v2.models.Game;
-import connect4.v2.models.Turn;
-import connect4.v2.utils.Message;
 import connect4.v2.views.View;
 
 public class Connect4 {
@@ -25,5 +22,5 @@ public class Connect4 {
     public static void main(String[] args) {
         new Connect4().play();
     }
-    
+
 }

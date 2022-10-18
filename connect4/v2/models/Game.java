@@ -1,10 +1,9 @@
 package connect4.v2.models;
 
-import connect4.v2.rules.LineResultValidator;
+import java.util.List;
+
 import connect4.v2.types.Coordinate;
 import connect4.v2.types.Direction;
-
-import java.util.List;
 
 public class Game {
 
@@ -18,7 +17,6 @@ public class Game {
         this.turn = new Turn(this.board);
     }
 
-
     public void reset() {
         this.board.reset();
         this.turn.reset();
@@ -27,7 +25,6 @@ public class Game {
     public void next() {
         this.turn.nextPlayer();
     }
-
 
     public int getCurrentPlayer() {
         return this.turn.getCurrentPlayer();
@@ -50,10 +47,9 @@ public class Game {
     }
 
     public boolean isConnect4() {
-        List<Direction[]> directions = Direction.getAllDirections();
-        LineResultValidator resultValidator = new LineResultValidator(board);
+        List<Direction[]> directions = Direction.getAllDirections();        
         for (int i = 0; i < directions.size(); i++) {
-            if (valid(directions.get(i))) {
+            if (this.valid(directions.get(i))) {
                 return true;
             }
         }
