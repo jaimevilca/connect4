@@ -8,11 +8,11 @@ public class PlayView extends InteractiveView {
         super(game);
     }
 
-    void interact() {
+    public void interact() {
         do {
             new PlayerView(this.game).interact();
             this.game.next();
-            new BoardView().write(this.game.getBoard());
+            new BoardView(this.game).interact();
         } while (!this.game.isConnect4() && !this.game.isFinished());
 
         if (this.game.isConnect4()) {

@@ -17,5 +17,4 @@ public class Coordinate {
         return row;
     }
 
-
 }

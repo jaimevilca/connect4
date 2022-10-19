@@ -15,6 +15,7 @@ public enum Direction {
 
     private Coordinate incremental;
 
+
     Direction(int row, int column) {
         incremental = new Coordinate(row, column);
     }
@@ -28,7 +29,9 @@ public enum Direction {
         return directions;
     }
 
-    public Coordinate move(Coordinate incrementalCoordinate) {
+    public Coordinate increment (Coordinate incrementalCoordinate) {
         return new Coordinate(this.incremental.getRow() + incrementalCoordinate.getRow(), this.incremental.getColumn() + incrementalCoordinate.getColumn());
     }
+
+
 }

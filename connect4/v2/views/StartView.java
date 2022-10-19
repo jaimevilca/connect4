@@ -9,9 +9,9 @@ public class StartView extends InteractiveView {
         super(game);
     }
 
-    void interact() {
+    public void interact() {
         Message.TITLE.writeln();
-        new BoardView().write(this.game.getBoard());
+        new BoardView(this.game).interact();
     }
 
 }

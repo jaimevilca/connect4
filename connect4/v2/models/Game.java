@@ -1,9 +1,10 @@
 package connect4.v2.models;
 
-import java.util.List;
-
+import connect4.v2.types.Color;
 import connect4.v2.types.Coordinate;
 import connect4.v2.types.Direction;
+
+import java.util.List;
 
 public class Game {
 
@@ -47,39 +48,43 @@ public class Game {
     }
 
     public boolean isConnect4() {
-        List<Direction[]> directions = Direction.getAllDirections();        
+        List<Direction[]> directions = Direction.getAllDirections();
         for (int i = 0; i < directions.size(); i++) {
-            if (this.valid(directions.get(i))) {
+            if (this.isDirectionValid(directions.get(i))) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean valid(Direction[] directions) {
+    public boolean isDirectionValid(Direction[] directions) {
 
         int totalTokens = 1;
         for (int i = 0; i < directions.length; i++) {
             totalTokens += countValidTokens(directions[i]);
         }
-        return isLineCompleted(totalTokens);
-    }
-
-    public boolean isLineCompleted(int length) {
-        return length >= MIN_RESULT_SIZE;
+        return totalTokens >= MIN_RESULT_SIZE;
     }
 
     public int countValidTokens(Direction direction) {
 
         int tokens = 0;
-        Coordinate nextCoordinate = direction.move(this.board.getLastToken());
+        Coordinate nextCoordinate = direction.increment(this.board.getLastToken());
         while (this.board.isCoordinateValid(nextCoordinate)
                 && this.board.getCurrentColor().equals(this.board.getColor(nextCoordinate))) {
             tokens++;
-            nextCoordinate = direction.move(nextCoordinate);
+            nextCoordinate = direction.increment(nextCoordinate);
         }
-
         return tokens;
     }
+
+    public Color getColor(Coordinate coordinate) {
+        return this.board.getColor(coordinate);
+    }
+
+    public Integer getNextRow(int column) {
+        return this.board.getNextRow(column);
+    }
+
 
 }
