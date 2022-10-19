@@ -1,22 +1,24 @@
 package connect4.v3.views.console;
 
-import connect4.v2.models.Game;
-import connect4.v2.utils.Message;
+import connect4.v3.controllers.PlayController;
+import connect4.v3.utils.Message;
 
-public class PlayView extends InteractiveView {
-    public PlayView(Game game) {
-        super(game);
+public class PlayView extends InteractiveView<PlayController> {
+
+
+    public PlayView(PlayController controller) {
+        super(controller);
     }
 
     public void interact() {
         do {
-            new PlayerView(this.game).interact();
-            this.game.next();
-            new BoardView(this.game).interact();
-        } while (!this.game.isConnect4() && !this.game.isFinished());
+            this.controller.nextPlayer();
+            new PlayerView(this.controller).interact();
+            new BoardView(this.controller).interact();
+        } while (!this.controller.isConnect4() && !this.controller.isFinished());
 
-        if (this.game.isConnect4()) {
-            Message.PLAYER_WIN.writeln(this.game.getCurrentPlayer());
+        if (this.controller.isConnect4()) {
+            Message.PLAYER_WIN.writeln(this.controller.getCurrentPlayer());
         } else {
             Message.GAME_FINISHED.writeln();
         }

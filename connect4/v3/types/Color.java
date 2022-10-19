@@ -1,4 +1,4 @@
-package connect4.v2.types;
+package connect4.v3.types;
 
 public enum Color {
     RED,

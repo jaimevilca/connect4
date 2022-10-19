@@ -1,20 +1,20 @@
 package connect4.v3.views.console;
 
-import connect4.v2.models.Game;
-import connect4.v2.utils.Message;
-import connect4.v2.utils.YesNoDialog;
+import connect4.v3.controllers.ResumeController;
+import connect4.v3.utils.Message;
+import connect4.v3.utils.YesNoDialog;
 
-public class ResumeView extends InteractiveView {
+public class ResumeView extends InteractiveView<ResumeController> {
 
-    public ResumeView(Game game) {
-        super(game);
-     }
+    public ResumeView(ResumeController controller) {
+        super(controller);
+    }
 
-     public boolean interact() {
+    public boolean interact() {
         YesNoDialog isResumed = new YesNoDialog();
         isResumed.read(Message.RESUME.toString());
         if (isResumed.isAffirmative()) {
-            this.game.reset();
+            this.controller.reset();
         }
         return isResumed.isAffirmative();
     }

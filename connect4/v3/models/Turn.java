@@ -1,6 +1,6 @@
-package connect4.v2.models;
+package connect4.v3.models;
 
-import connect4.v2.types.Color;
+import connect4.v3.types.Color;
 
 public class Turn {
 
@@ -23,8 +23,7 @@ public class Turn {
         for (int i = 0; i < NUMBER_PLAYERS; i++) {
             this.players[i] = new Player(Color.values()[i], this.board);
         }
-
-        this.currentPlayer = 0;
+        this.currentPlayer = (int) ( Math.random() * 2 );
     }
 
 
@@ -49,6 +48,6 @@ public class Turn {
     }
 
     public int getCurrentPlayer() {
-        return currentPlayer;
+        return currentPlayer + 1;
     }
 }

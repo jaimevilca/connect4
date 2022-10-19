@@ -1,7 +1,7 @@
 package connect4.v3.views.console;
 
-import connect4.v2.types.Color;
-import connect4.v2.utils.Console;
+import connect4.v3.types.Color;
+import connect4.v3.utils.Console;
 
 public class ColorView {
 
@@ -10,7 +10,7 @@ public class ColorView {
         if (!color.isNull()) {
             colorName = color.name().substring(0, 1);
         }
-        Console.getInstance().writeln(colorName);
+        Console.getInstance().write(colorName);
     }
 
 }

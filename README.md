@@ -1,4 +1,4 @@
-# Connecta4 Game
+# Connecta4
 
 More detail [here](https://es.wikipedia.org/wiki/Conecta_4). 
 
@@ -6,13 +6,10 @@ More detail [here](https://es.wikipedia.org/wiki/Conecta_4).
 
 * **Modelo del dominio** - [v1](https://github.com/jaimevilca/connect4/tree/master/connect4/v1)
 * **Modelo - Vista** - [v2](https://github.com/jaimevilca/connect4/tree/master/connect4/v2)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* **Modelo - Vista - Controlador** - [v3](https://github.com/jaimevilca/connect4/tree/master/connect4/v3)
 
 ## Autores
 
-* Jordy Piedra
-* Jaime Vilca
+* [Jordy Piedra](https://github.com/JordyPiedra)
+* [Jaime Vilca](https://github.com/jaimevilca)
 

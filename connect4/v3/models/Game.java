@@ -1,8 +1,8 @@
-package connect4.v2.models;
+package connect4.v3.models;
 
-import connect4.v2.types.Color;
-import connect4.v2.types.Coordinate;
-import connect4.v2.types.Direction;
+import connect4.v3.types.Color;
+import connect4.v3.types.Coordinate;
+import connect4.v3.types.Direction;
 
 import java.util.List;
 
@@ -49,8 +49,8 @@ public class Game {
 
     public boolean isConnect4() {
         List<Direction[]> directions = Direction.getAllDirections();
-        for (int i = 0; i < directions.size(); i++) {
-            if (this.isDirectionValid(directions.get(i))) {
+        for (Direction[] direction : directions) {
+            if (this.isDirectionValid(direction)) {
                 return true;
             }
         }
@@ -58,10 +58,9 @@ public class Game {
     }
 
     public boolean isDirectionValid(Direction[] directions) {
-
         int totalTokens = 1;
-        for (int i = 0; i < directions.length; i++) {
-            totalTokens += countValidTokens(directions[i]);
+        for (Direction direction : directions) {
+            totalTokens += countValidTokens(direction);
         }
         return totalTokens >= MIN_RESULT_SIZE;
     }
@@ -85,6 +84,15 @@ public class Game {
     public Integer getNextRow(int column) {
         return this.board.getNextRow(column);
     }
+
+    public Integer getDimensionRow() {
+        return Board.DIMENSION_ROW;
+    }
+
+    public Integer getDimensionColumn() {
+        return Board.DIMENSION_COLUMN;
+    }
+
 
 
 }

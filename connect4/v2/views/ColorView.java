@@ -10,7 +10,7 @@ public class ColorView {
         if (!color.isNull()) {
             colorName = color.name().substring(0, 1);
         }
-        Console.getInstance().writeln(colorName);
+        Console.getInstance().write(colorName);
     }
 
 }

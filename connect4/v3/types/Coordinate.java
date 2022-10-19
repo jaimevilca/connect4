@@ -1,8 +1,10 @@
-package connect4.v2.types;
+package connect4.v3.types;
 
 public class Coordinate {
 
-    private int column, row;
+    private int column;
+
+    private int row;
 
     public Coordinate(int row, int column) {
         this.column = column;

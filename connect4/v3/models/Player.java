@@ -1,6 +1,6 @@
-package connect4.v2.models;
+package connect4.v3.models;
 
-import connect4.v2.types.Color;
+import connect4.v3.types.Color;
 
 public class Player {
 
