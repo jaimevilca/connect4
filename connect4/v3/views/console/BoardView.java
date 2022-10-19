@@ -1,4 +1,4 @@
-package connect4.v2.views;
+package connect4.v3.views.console;
 
 import connect4.v2.models.Board;
 import connect4.v2.models.Game;
@@ -8,9 +8,7 @@ import connect4.v2.utils.Message;
 
 public class BoardView extends InteractiveView {
 
-    public BoardView(Game game) {
-        super(game);
-    }
+
 
     public void interact() {
         Message.HORIZONTAL_LINE.writeln();
