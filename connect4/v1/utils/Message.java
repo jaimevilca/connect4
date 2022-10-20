@@ -6,7 +6,7 @@ public enum Message {
     VERTICAL_LINE(" | "),
     PLAYER_WIN("#player player: You win!!! :-)"),
     ENTER_COLUMN_TO_PUT("Put token column position "),
-
+    RESUME("Reset game? y / n "),
     PLAYER_TURN("player #player turn ");
 
     private String message;
@@ -23,8 +23,8 @@ public enum Message {
         Console.getInstance().writeln(this.message);
     }
 
-   public void writeln(int player) {
-        Console.getInstance().writeln(this.message.replaceAll("#player", "" + player));
+    public void writeln(int player) {
+        Console.getInstance().writeln(this.message.replaceAll("#player", "" + (player + 1)));
     }
 
     @Override

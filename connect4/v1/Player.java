@@ -23,7 +23,7 @@ public class Player {
         int column;
         do {
             column = this.getCoordinate(Message.ENTER_COLUMN_TO_PUT)-1;
-        } while (!this.board.hasRowSpace(column));
+        } while (this.board.getNextRow(column) == null);
         this.board.putToken(column, this.color);
         this.putTokens++;
     }
@@ -32,7 +32,4 @@ public class Player {
         return Console.getInstance().readInt(message.toString());
     }
 
-    public int getPutTokens() {
-        return putTokens;
-    }
 }

@@ -29,8 +29,9 @@ public class Board {
     public Integer getNextRow(int column) {
 
         for (int row = DIMENSION_ROW - 1; row >= 0; row--) {
-            if (this.colors[row][column].isNull())
+            if (this.colors[row][column].isNull()){
                 return row;
+            }
         }
         return null;
     }
@@ -43,10 +44,6 @@ public class Board {
 
     public Color getColor(Coordinate coordinate) {
         return colors[coordinate.getRow()][coordinate.getColumn()];
-    }
-
-    public Color[][] getColors() {
-        return colors;
     }
 
     public boolean isCoordinateValid(Coordinate coordinate) {

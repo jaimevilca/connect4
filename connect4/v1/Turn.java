@@ -23,18 +23,13 @@ public class Turn {
         for (int i = 0; i < NUMBER_PLAYERS; i++) {
             this.players[i] = new Player(Color.values()[i], this.board);
         }
-
         this.currentPlayer = 0;
     }
 
-    public Color getCurrentColor() {
-        return this.players[this.currentPlayer].getColor();
-    }
-
     public void move() {
-        Message.PLAYER_TURN.writeln(currentPlayer+1);
+        Message.PLAYER_TURN.writeln(currentPlayer);
         this.players[this.currentPlayer].play();
-        if (!this.board.isConnect4(getCurrentColor())) {
+        if (!this.board.isConnect4()) {
             nextPlayer();
         }
     }
@@ -43,4 +38,7 @@ public class Turn {
         this.currentPlayer = (this.currentPlayer + 1) % Turn.NUMBER_PLAYERS;
     }
 
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
 }

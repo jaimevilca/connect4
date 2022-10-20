@@ -45,10 +45,6 @@ public class Board {
         return colors[coordinate.getRow()][coordinate.getColumn()];
     }
 
-    public Color[][] getColors() {
-        return colors;
-    }
-
     public boolean isCoordinateValid(Coordinate coordinate) {
         return (coordinate.getRow() >= 0 && coordinate.getRow() < Board.DIMENSION_ROW) && (coordinate.getColumn() >= 0 && coordinate.getColumn() < Board.DIMENSION_COLUMN);
     }
